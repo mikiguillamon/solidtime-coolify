@@ -11,6 +11,13 @@ services:
       - "app-storage:/var/www/html/storage"
     environment:
       CONTAINER_MODE: http
+      DB_CONNECTION: pgsql
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_SSLMODE: disable
+      DB_DATABASE: solidtime
+      DB_USERNAME: solidtime
+      DB_PASSWORD: randompassword
     healthcheck:
       test: [ "CMD", "curl", "--fail", "http://localhost:8000/health-check/up" ]
     env_file:
@@ -27,6 +34,13 @@ services:
       - "app-storage:/var/www/html/storage"
     environment:
       CONTAINER_MODE: scheduler
+      DB_CONNECTION: pgsql
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_SSLMODE: disable
+      DB_DATABASE: solidtime
+      DB_USERNAME: solidtime
+      DB_PASSWORD: randompassword
     healthcheck:
       test: [ "CMD", "healthcheck" ]
     env_file:
@@ -44,6 +58,13 @@ services:
     environment:
       CONTAINER_MODE: worker
       WORKER_COMMAND: "php /var/www/html/artisan queue:work"
+      DB_CONNECTION: pgsql
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_SSLMODE: disable
+      DB_DATABASE: solidtime
+      DB_USERNAME: solidtime
+      DB_PASSWORD: randompassword
     healthcheck:
       test: [ "CMD", "healthcheck" ]
     env_file:
