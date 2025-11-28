@@ -9,8 +9,6 @@ services:
       - internal
     volumes:
       - "app-storage:/var/www/html/storage"
-      - "./logs:/var/www/html/storage/logs"
-      - "./app-storage:/var/www/html/storage/app"
     environment:
       CONTAINER_MODE: http
     healthcheck:
@@ -27,8 +25,6 @@ services:
       - internal
     volumes:
       - "app-storage:/var/www/html/storage"
-      - "./logs:/var/www/html/storage/logs"
-      - "./app-storage:/var/www/html/storage/app"
     environment:
       CONTAINER_MODE: scheduler
     healthcheck:
@@ -45,8 +41,6 @@ services:
       - internal
     volumes:
       - "app-storage:/var/www/html/storage"
-      - "./logs:/var/www/html/storage/logs"
-      - "./app-storage:/var/www/html/storage/app"
     environment:
       CONTAINER_MODE: worker
       WORKER_COMMAND: "php /var/www/html/artisan queue:work"
