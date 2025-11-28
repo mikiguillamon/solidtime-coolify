@@ -59,13 +59,11 @@ services:
   database:
     restart: always
     image: 'postgres:15'
-#    ports:
-#      - '${FORWARD_DB_PORT:-5432}:5432'
     environment:
-      PGPASSWORD: '${DB_PASSWORD:-secret}'
-      POSTGRES_DB: '${DB_DATABASE}'
-      POSTGRES_USER: '${DB_USERNAME}'
-      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+      PGPASSWORD: 'randompassword'
+      POSTGRES_DB: 'solidtime'
+      POSTGRES_USER: 'solidtime'
+      POSTGRES_PASSWORD: 'randompassword'
     volumes:
       - 'database-storage:/var/lib/postgresql/data'
     networks:
@@ -76,9 +74,9 @@ services:
         - pg_isready
         - '-q'
         - '-d'
-        - '${DB_DATABASE}'
+        - 'solidtime'
         - '-U'
-        - '${DB_USERNAME}'
+        - 'solidtime'
       retries: 3
       timeout: 5s
   gotenberg:
