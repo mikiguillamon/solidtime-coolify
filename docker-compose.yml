@@ -80,7 +80,7 @@ services:
       POSTGRES_USER: 'solidtime'
       POSTGRES_PASSWORD: 'randompassword'
     volumes:
-      - 'database-storage:/var/lib/postgresql/data'
+      - 'database-storage-v2:/var/lib/postgresql/data'
     networks:
       - internal
     healthcheck:
@@ -103,5 +103,5 @@ services:
 networks:
   internal:
 volumes:
-  database-storage:
+  database-storage-v2:
   app-storage:
